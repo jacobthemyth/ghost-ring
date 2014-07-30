@@ -1,0 +1,4 @@
+[submodule "sites/relatives"]
+	path = sites/relatives
+	url = git://github.com/jacobthemyth/all-my-dead-relatives.git
+	branch = deploy

@@ -10,6 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.8.6",
-    "gulp-shell": "^0.2.9"
+    "gulp-shell": "^0.2.9",
+    "gulp-directory-map": "0.0.1",
+    "gulp-jade": "^0.7.0",
   }
 }
