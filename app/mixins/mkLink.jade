@@ -1,0 +1,8 @@
+mixin mkLinks(index, thing)
+  if typeof(thing) === 'string'
+    li
+      a(href=thing) index
+  else if typeof(thing) === 'object'
+    ul= index
+      each subthing, subindex in thing
+        +mkLinks(subindex, subthing)

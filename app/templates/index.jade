@@ -1,0 +1,11 @@
+include /mixins/mkLink
+
+doctype
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  title
+body
+  ul
+    each thing, index in urls
+      +mkLinks(index, thing)

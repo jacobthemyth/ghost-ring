@@ -2,24 +2,23 @@ var gulp         = require('gulp');
 var jade         = require('gulp-jade');
 var directoryMap = require('gulp-directory-map');
 
-gulp.task('generate-sidebar', function(){
-  var fakeUrls = {
-    "index.html": "index.html",
-    "relatives": {
-      "index.html": "relatives/index.html"
-    }
-  };
-
-  gulp.src('app/sidebar.jade')
-});
-
-var print = require('gulp-print');
+var urlsPath = './urls.json';
 
 gulp.task('generate-urls', function(){
   gulp.src('sites/**/*.html')
-    .pipe(print())
     .pipe(directoryMap({
       filename: 'urls.json'
     }))
-    .pipe(gulp.dest('.tmp'));
+    .pipe(gulp.dest('somethingsomething/dangerzone'));
 });
+
+gulp.task('templates', ['generate-urls'], function(){
+  gulp.src('app/templates/**/*.jade')
+    .pipe(jade({
+      basedir: 'app',
+      data: {urls: require(urlsPath)}
+    }))
+    .pipe(gulp.dest('dist'))
+});
+
+gulp.task('default', ['templates'])
