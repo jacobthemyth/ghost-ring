@@ -26,7 +26,7 @@ gulp.task('templates', ['generate-urls'], function(){
     .pipe(gulp.dest('dist'))
 });
 
-gulp.task('build', ['templates', 'copy-sites'])
+gulp.task('build', ['copy-sites', 'templates'])
 
 //     __                 __       __
 //    / /___  _________ _/ /  ____/ /__ _   __
@@ -51,17 +51,17 @@ gulp.task('connect', function () {
     });
 });
 
-gulp.task('serve', ['connect', 'build'], function () {
+gulp.task('serve', ['connect'], function () {
   require('opn')('http://0.0.0.0:9000');
 });
 
-gulp.task('watch', ['connect', 'serve'], function () {
+gulp.task('watch', ['build', 'serve'], function () {
   var server = require('gulp-livereload')();
 
   // watch for changes
 
   gulp.watch([
-    'app/*.html',
+    'app/**/*',
   ]).on('change', function (file) {
     server.changed(file.path);
   });
