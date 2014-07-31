@@ -1,8 +1,12 @@
+include /mixins/spacify
+
 mixin mkLinks(index, thing)
   if typeof(thing) === 'string'
     li
-      a(href=thing) index
+      a(href=thing)
+        +spacify(index)
   else if typeof(thing) === 'object'
-    ul= index
+    ul
+      +spacify(index)
       each subthing, subindex in thing
         +mkLinks(subindex, subthing)
