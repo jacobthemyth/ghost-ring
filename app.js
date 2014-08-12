@@ -21,7 +21,12 @@ app.use(session({
 }));
 
 app.use(ghostPortal({
-  google: { requiredDomains: ['theironyard.com'] }
+  google: {
+    clientID: ENV.GOOGLE_CLIENT_ID,
+    clientSecret: ENV.GOOGLE_CLIENT_SECRET,
+    callbackURL: ENV.GOOGLE_CALLBACK_URL,
+    requiredDomains: [ENV.GOOGLE_REQUIRED_DOMAIN]
+  }
 }));
 
 app.use(serveStatic('sites'));
