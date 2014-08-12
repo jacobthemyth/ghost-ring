@@ -10,7 +10,6 @@ var ENV = process.env;
 
 var app = express();
 
-console.log("Connecting to " + ENV.MONGO_URL);
 app.use(session({
   secret: ENV.SESSION_SECRET,
   resave: true,
@@ -24,6 +23,7 @@ app.use(ghostPortal({
   google: {
     clientID: ENV.GOOGLE_CLIENT_ID,
     clientSecret: ENV.GOOGLE_CLIENT_SECRET,
+    authURL: ENV.GOOGLE_AUTH_URL,
     callbackURL: ENV.GOOGLE_CALLBACK_URL,
     requiredDomains: [ENV.GOOGLE_REQUIRED_DOMAIN]
   }
