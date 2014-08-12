@@ -1,6 +1,9 @@
 {
   "name": "ghost-ring",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "engines": {
+    "node": "0.10.x"
+  },
   "description": "One ring to rule them all",
   "main": "app.js",
   "dependencies": {
@@ -14,6 +17,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node app.js",
     "test": "mocha test"
   },
   "repository": {
