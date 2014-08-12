@@ -2,22 +2,26 @@
   "name": "ghost-ring",
   "version": "0.0.0",
   "description": "One ring to rule them all",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "app.js",
+  "dependencies": {
+    "connect-mongo": "^0.4.1",
+    "express": "^4.8.3",
+    "dotenv": "^0.4.0",
+    "express-session": "^1.7.5",
+    "ghost-portal": "git://github.com/jacobthemyth/ghost-portal"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "connect": "^3.1.0",
-    "connect-livereload": "^0.4.0",
-    "gulp": "^3.8.6",
-    "gulp-directory-map": "0.0.1",
-    "gulp-jade": "^0.7.0",
-    "gulp-livereload": "^2.1.0",
-    "gulp-shell": "^0.2.9",
-    "opn": "^0.1.2",
-    "serve-index": "^1.1.5",
-    "serve-static": "^1.4.3"
-  }
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jacobthemyth/ghost-ring.git"
+  },
+  "author": "Jacob Smith <jacob@jacobsmith.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacobthemyth/ghost-ring/issues"
+  },
+  "homepage": "https://github.com/jacobthemyth/ghost-ring"
 }
