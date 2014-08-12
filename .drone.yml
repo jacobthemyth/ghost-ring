@@ -1,3 +1,6 @@
 image: node0.10
 script:
   - cat README.md
+deploy:
+  heroku:
+    app: swayze
