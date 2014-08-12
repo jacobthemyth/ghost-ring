@@ -20,12 +20,12 @@ app.use(session({
   })
 }));
 
-app.use(serveStatic('sites'));
-app.use(serveIndex('sites'));
-
 app.use(ghostPortal({
   google: { requiredDomains: ['theironyard.com'] }
 }));
+
+app.use(serveStatic('sites'));
+app.use(serveIndex('sites'));
 
 var port = Number(ENV.PORT || 8888);
 app.listen(port, function() {
