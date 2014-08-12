@@ -1,4 +1,6 @@
 var express = require('express'),
+    serveStatic = require('serve-static'),
+    serveIndex = require('serve-index'),
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     ghostPortal = require('ghost-portal');
@@ -18,10 +20,14 @@ app.use(session({
   })
 }));
 
+app.use(serveStatic('sites'));
+app.use(serveIndex('sites'));
+
 app.use(ghostPortal({
   google: { requiredDomains: ['theironyard.com'] }
 }));
 
 var port = Number(ENV.PORT || 8888);
-app.listen(port);
-console.log("Ghost Ring is listening on port " + port);
+app.listen(port, function() {
+  console.log("Ghost Ring is listening on port " + port);
+});
