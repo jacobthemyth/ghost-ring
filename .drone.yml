@@ -1,5 +1,6 @@
 image: node0.10
 script:
+  - git ls-files dist --error-unmatch
   - cat README.md
 deploy:
   heroku:
