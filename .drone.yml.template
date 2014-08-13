@@ -3,3 +3,4 @@ script:
   - npm install
   - npm build
   - git subtree push --force --prefix dist origin dist
+# initiate ghost-ring deploy
