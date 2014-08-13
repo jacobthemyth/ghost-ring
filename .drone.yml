@@ -1,6 +1,6 @@
 image: node0.10
 script:
-  - '[ "$(git rev-parse HEAD)" = "$(git rev-parse master)" ]'
+  - '[ "$(git rev-parse HEAD)" = "$(git rev-parse master)" ] || exit'
   - git submodule update --remote
 deploy:
   heroku:
