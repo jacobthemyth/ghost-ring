@@ -1,6 +1,6 @@
 image: node0.10
 script:
-  - '[[ "$(git symbolic-ref --short -q HEAD)" -eq "foo" ]]'
+  - '[[ "$(git symbolic-ref -q HEAD)" -eq "refs/heads/foo" ]]'
   - git submodule update --remote
 deploy:
   heroku:
