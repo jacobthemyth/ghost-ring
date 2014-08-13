@@ -6,7 +6,7 @@ var directoryMap = require('gulp-directory-map');
 var urlsPath = './urls.json';
 
 gulp.task('generate-urls', function(){
-  gulp.src('sites/**/*.html')
+  return gulp.src('sites/**/*.html')
     .pipe(directoryMap({
       filename: 'urls.json'
     }))
@@ -14,12 +14,12 @@ gulp.task('generate-urls', function(){
 });
 
 gulp.task('copy-sites', function(){
-  gulp.src('sites/**/*')
-  .pipe(gulp.dest('dist'))
+  return gulp.src('sites/**/*')
+    .pipe(gulp.dest('dist'))
 });
 
 gulp.task('templates', ['generate-urls'], function(){
-  gulp.src('app/templates/**/*.jade')
+  return gulp.src('app/templates/**/*.jade')
     .pipe(jade({
       basedir: 'app',
       data: {urls: require(urlsPath)}

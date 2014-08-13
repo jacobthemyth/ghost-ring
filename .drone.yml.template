@@ -1,0 +1,6 @@
+image: node0.10
+script:
+  - git ls-files dist --error-unmatch
+  - npm install
+  - npm build
+  - git subtree push --force --prefix dist origin dist

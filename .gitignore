@@ -1,5 +1,3 @@
-dist
 .tmp
 node_modules
-urls.json
 .env
