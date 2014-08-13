@@ -1,8 +1,7 @@
 image: node0.10
 script:
-  - git ls-files dist --error-unmatch
-  - git submodule update --remote
   - '[[ "$(git symbolic-ref --short -q HEAD)" -eq "foo" ]]'
+  - git submodule update --remote
 deploy:
   heroku:
     app: swayze
