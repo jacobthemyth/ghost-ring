@@ -1,6 +1,6 @@
 image: node0.10
 script:
-  - '[ "$(git symbolic-ref HEAD)" = "refs/heads/foo" ]'
+  - '[ "$(git rev-parse HEAD)" = "$(git rev-parse master)" ]'
   - git submodule update --remote
 deploy:
   heroku:
