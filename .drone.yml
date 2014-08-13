@@ -4,4 +4,3 @@ script:
 deploy:
   heroku:
     app: swayze
-    force: true
