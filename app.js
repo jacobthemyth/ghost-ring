@@ -29,8 +29,8 @@ app.use(ghostPortal({
   }
 }));
 
-app.use(serveStatic('sites'));
-app.use(serveIndex('sites'));
+app.use(serveStatic('dist'));
+app.use(serveIndex('dist'));
 
 var port = Number(ENV.PORT || 8888);
 app.listen(port, function() {
