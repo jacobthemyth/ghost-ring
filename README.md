@@ -8,7 +8,7 @@ sh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDn5UNMPW5n8De2zWEckR5nC7co17RSdc2R7phNZUYe+
   - Build > Execute Shell
      ```sh
     npm install
-    npm build
+    npm run build
     ```
   - Post-build Actions > SSH Publishers
     - Name = swayze
