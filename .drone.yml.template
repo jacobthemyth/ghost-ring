@@ -1,6 +1,0 @@
-image: node0.10
-script:
-  - npm install
-  - npm build
-  - git subtree push --force --prefix dist origin dist
-# initiate ghost-ring deploy

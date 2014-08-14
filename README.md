@@ -4,6 +4,12 @@
 3. Add `.drone.yml` to the site repository (See [.drone.yml.template](.drone.yml.template))
 4. In ghost-ring: `git submodule add -b dist <repository-url> sites/<name>`
 5. Add to drone
+  - npm install
+  - npm build
+  - git subtree push --force --prefix dist origin dist
+  - initiate ghost-ring build
+
+# initiate ghost-ring deploy
 
 # Development
 - Fetch the submodules (i.e. after cloning or fetching ghost-ring).
