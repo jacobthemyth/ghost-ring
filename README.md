@@ -1,25 +1,43 @@
 # Adding a new site to Ghost Ring
-1. Add a `build` script to package.json under `scripts`. (e.g. `"build": "node_modules/.bin/ghost-helm build"`)
-2. Add Jenkins SSH key as deploy key on repo
-
-```sh
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDn5UNMPW5n8De2zWEckR5nC7co17RSdc2R7phNZUYe+M582iVfW58xRL0s9yT8Yz8niyq0KGhs+m2TdUcoSPtn4MOz5Ci68MXUo5E0e8lO7ngbCE5J+xsBmBZ1xY/FFKRWipNj34JNic9oWIriohLeJvYc1SAWD445S1egFGPj0cIVDqTQyg5iQMXjEoyWQqMmGVqoIGlGk+sWpkJ+6VjSZ+LgIcTwuG6QUEbwrhM7X1ox/O3hx8ySxL+Dw5KvCaNqiig62/7EmoOCncPdMjbheRmDs9qi3iUgId2ck5Yem8QL8nc+cWXni6E+LDbTHbnNfcKl3TLyc+WfHckgebeF jake@theironyard.com
-```
-
-3. Add new free-style build to jenkins
-  - Source Code Management > Git > Repository URL
-  - Build Triggers > Build when a change is pushed to GitHub
-  - Build > Execute Shell
+1. Generate a new SSH private/public key (this can just be on your local machine)
 
     ```sh
-    npm install
-    npm run build
+    ssh-keygen -f id_rsa_<project>
     ```
 
-  - Post-build Actions > Send build artifacts over SSH
-    - Name = swayze
-    - Source files = `dist/**/*`
-    - Remove prefix = `dist`
-    - Remote directory = `dist/<Name-of-Site-with-dashes-instead-of-spaces>`
-  - Post-build Actions > Build other projects (make sure it comes after SSH publish)
-    - Projects to build = ghost-ring
+    You probably want to keep it around, just in case.
+
+2. Copy the contents of the private key (`id_rsa_project`) to Jenkins
+    - Manage Jenkins > Manage Credentials > Add Credentials > SSH Username with private key
+    - Username = jenkins
+    - Description = The project name
+    - Private key > Enter directly > Paste the private key contents
+
+3. Copy the contents of the public key (`id_rsa_project.pub`) to the repo on GitHub
+    - Settings > Deploy Keys
+
+4. Add new free-style build to jenkins
+    - Source Code Management > Git
+        - Repository URL = repo URL
+        - Credentials = the private key you just added
+    - Build Triggers > Build when a change is pushed to GitHub
+    - Build Environment > Specific credentials > the key you just added
+    - Build > Execute Shell
+
+        ```sh
+        npm install
+        npm run build
+        ```
+
+    - Post-build Actions > Send build artifacts over SSH
+        - Name = swayze
+        - Source files = `dist/**/*`
+        - Remove prefix = `dist`
+        - Remote directory = `dist/<Name-of-Site-with-dashes-instead-of-spaces>`
+    - Post-build Actions > Build other projects
+        - make sure it comes after SSH publish by dragging it down
+        - Projects to build = ghost-ring
+
+5. Add a `build` script to package.json under `scripts`. (e.g. `"build": "node_modules/.bin/ghost-helm build"`)
+
+The first build will take quite a while because it has to `npm install` all the things.
