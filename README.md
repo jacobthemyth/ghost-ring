@@ -10,10 +10,12 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDn5UNMPW5n8De2zWEckR5nC7co17RSdc2R7phNZUYe
   - Source Code Management > Git > Repository URL
   - Build Triggers > Build when a change is pushed to GitHub
   - Build > Execute Shell
-     ```sh
+
+    ```sh
     npm install
     npm run build
     ```
+
   - Post-build Actions > Send build artifacts over SSH
     - Name = swayze
     - Source files = `dist/**/*`
