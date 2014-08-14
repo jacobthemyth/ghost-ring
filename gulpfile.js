@@ -6,16 +6,11 @@ var directoryMap = require('gulp-directory-map');
 var urlsPath = './urls.json';
 
 gulp.task('generate-urls', function(){
-  return gulp.src('sites/**/*.html')
+  return gulp.src('dist/**/*.html')
     .pipe(directoryMap({
       filename: 'urls.json'
     }))
     .pipe(gulp.dest('somethingsomething/dangerzone'));
-});
-
-gulp.task('copy-sites', function(){
-  return gulp.src('sites/**/*')
-    .pipe(gulp.dest('dist'))
 });
 
 gulp.task('templates', ['generate-urls'], function(){
@@ -28,4 +23,4 @@ gulp.task('templates', ['generate-urls'], function(){
     .on('error', gutil.log)
 });
 
-gulp.task('build', ['copy-sites', 'templates'])
+gulp.task('build', ['templates'])
