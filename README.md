@@ -17,14 +17,20 @@
     - Settings > Deploy Keys
 
 4. Add new free-style build to jenkins
+    - Github Project = the repo URL
+    - HipChat Notifications
+      - Notify Build Start
+      - Notify Failure
+      - Notify Success
     - Source Code Management > Git
         - Repository URL = repo URL
         - Credentials = the private key you just added
     - Build Triggers > Build when a change is pushed to GitHub
-    - Build Environment > Specific credentials > the key you just added
+    - Build Environment > SSH Agent > Specific credentials > the key you just added
     - Build > Execute Shell
 
         ```sh
+        bower install
         npm install
         npm run build
         ```
@@ -37,6 +43,7 @@
     - Post-build Actions > Build other projects
         - make sure it comes after SSH publish by dragging it down
         - Projects to build = ghost-ring
+    - Post-build Actions > HipChat Notification
 
 5. Add a `build` script to package.json under `scripts`. (e.g. `"build": "node_modules/.bin/ghost-helm build"`)
 
