@@ -4,25 +4,21 @@
   "engines": {
     "node": "0.10.x"
   },
-  "description": "One ring to rule them all",
+  "description": "Keep it static, keep it safe.",
   "main": "app.js",
   "dependencies": {
     "connect-mongo": "^0.4.1",
     "dotenv": "^0.4.0",
     "express": "^4.8.3",
     "express-session": "^1.7.5",
-    "ghost-helm": "^0.1.5",
     "ghost-portal": "git://github.com/jacobthemyth/ghost-portal",
-    "gulp": "^3.8.7",
-    "gulp-inject": "^1.0.1",
     "serve-index": "^1.1.6",
     "serve-static": "^1.5.1"
   },
   "devDependencies": {},
   "scripts": {
     "start": "node app.js",
-    "test": "mocha test",
-    "build": "NODE_ENV=production node_modules/.bin/gulp build"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
