@@ -1,16 +1,18 @@
 var gulp = require('gulp'),
-    ghostHelm = require('ghost-helm'),
     inject = require('gulp-inject');
 
-gulp.task('inject-sidebar', ['sidebar'], function(){
-  return gulp.src(config.distDir + '/**/*.html')
-    .pipe(inject(gulp.src(config.sidebar), {
-      name: 'ghost-ring-sidebar',
+gulp.task('copy-index', function () {
+  return gulp.src('app/templates/pages/index.html')
+    .pipe(gulp.dest('dist'));
+})
+
+gulp.task('default', ['copy-index'], function(){
+  return gulp.src('dist/**/*.html')
+    .pipe(inject(gulp.src('app/templates/includes/sidebar.html'), {
+      name: 'ghost-ring-header',
       transform: function (filePath, file) {
         return file.contents.toString('utf8')
       }
     }))
-    .pipe(gulp.dest(config.distDir));
+    .pipe(gulp.dest('dist'));
 });
-
-ghostHelm.setup({cleanDir: ['.tmp']}, gulp);
