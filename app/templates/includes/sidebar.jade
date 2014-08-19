@@ -1,0 +1,12 @@
+mixin spacify(thing)
+  = thing.replace(/-/g, ' ').replace('.html', '').replace(/[-\._]/g, ' ')
+
+mixin makeLinks(index, urls)
+  -delete urls['index.html']
+  each url, name in urls
+    li
+      a.folder(href=name)
+        +spacify(name)
+
+ul.ghost-sidebar
+  +makeLinks("Welcome to The Ghost of Swayze Past", urls)
