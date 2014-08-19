@@ -13,6 +13,7 @@
     "express-session": "^1.7.5",
     "ghost-helm": "^0.1.5",
     "ghost-portal": "git://github.com/jacobthemyth/ghost-portal",
+    "gulp": "^3.8.7",
     "serve-index": "^1.1.6",
     "serve-static": "^1.5.1"
   },
@@ -20,7 +21,7 @@
   "scripts": {
     "start": "node app.js",
     "test": "mocha test",
-    "build": "NODE_ENV=production node_modules/.bin/ghost-helm build"
+    "build": "NODE_ENV=production node_modules/.bin/gulp build"
   },
   "repository": {
     "type": "git",
