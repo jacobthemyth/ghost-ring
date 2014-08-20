@@ -66,5 +66,6 @@
     - Post-build Actions > Set build status on GitHub commit
 
 6. Add a `build` script to package.json under `scripts`. (e.g. `"build": "node_modules/.bin/ghost-helm build"`)
+7. Add Documenters team as a collaborator to repo.
 
 The first build will take quite a while because it has to `npm install` all the things.
