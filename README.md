@@ -47,6 +47,8 @@
 
 5. Add a new free-style build to jenkins for pull requests
     - Github Project = the repo URL
+    - HipChat Notifications
+      - Notify Failures
     - Source Code Management > Git
         - Repository URL = repo URL
         - Credentials = the private key you just added
