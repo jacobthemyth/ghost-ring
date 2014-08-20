@@ -45,6 +45,24 @@
         - Projects to build = ghost-ring
     - Post-build Actions > HipChat Notification
 
-5. Add a `build` script to package.json under `scripts`. (e.g. `"build": "node_modules/.bin/ghost-helm build"`)
+5. Add a new free-style build to jenkins for pull requests
+    - Github Project = the repo URL
+    - Source Code Management > Git
+        - Repository URL = repo URL
+        - Credentials = the private key you just added
+        - Refspec = `+refs/pull/*:refs/remotes/origin/pr/*`
+        - Branch specifier = `${sha1}`
+    - Build Triggers > GitHub Pull Request Builder
+      - Use github hooks for build triggering
+    - Build > Execute Shell
+
+        ```sh
+        bower install
+        npm install
+        npm run build
+        ```
+    - Post-build Actions > Set build status on GitHub commit
+
+6. Add a `build` script to package.json under `scripts`. (e.g. `"build": "node_modules/.bin/ghost-helm build"`)
 
 The first build will take quite a while because it has to `npm install` all the things.
