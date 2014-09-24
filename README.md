@@ -30,7 +30,7 @@
     - Build > Execute Shell
 
         ```sh
-        bower install
+        bower update
         npm install
         npm run build
         ```
@@ -59,7 +59,7 @@
     - Build > Execute Shell
 
         ```sh
-        bower install
+        bower update
         npm install
         npm run build
         ```

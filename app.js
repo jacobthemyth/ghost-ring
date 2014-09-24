@@ -2,7 +2,6 @@ var express = require('express'),
     serveStatic = require('serve-static'),
     serveIndex = require('serve-index'),
     session = require('express-session'),
-    MongoStore = require('connect-mongo')(session),
     ghostPortal = require('ghost-portal');
 
 require('dotenv').load();
@@ -14,9 +13,7 @@ app.use(session({
   secret: ENV.SESSION_SECRET,
   resave: true,
   saveUninitialized: true,
-  store: new MongoStore({
-    url: ENV.MONGO_URL
-  })
+  store: new session.MemoryStore()
 }));
 
 app.use(ghostPortal({
